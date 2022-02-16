@@ -11,7 +11,7 @@ con.connect(function(err) {
     console.log("Connected!");
 });
 
-app.get('/foo', function (req, res){
+app.get('/lucas', function (req, res){
     res.json({"coucou" : "ceci est un json"})
 });
 
@@ -21,8 +21,8 @@ app.use(express.urlencoded({
 
 app.post('/bar', function (req, res){
     var body = req.body;
-    console.log(req.body.foo);
-    res.send(req.body.foo);
+    console.log(req.body.nono);
+    res.send(req.body.nono);
 });
 
 app.listen(port, () => {
