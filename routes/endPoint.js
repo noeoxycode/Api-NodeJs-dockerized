@@ -1,18 +1,18 @@
-const express = require('express')
-const app = express()
-const book = require("../controllers/controller")
-
-
-app.get("/", book.getAll());
-
-app.get('/book/:isbn', book.getByIsbn);
-
-app.post('/books', book.createBook);
-/*
-router.get('books/:isbn', books.findBooksByIsbn);
-
-router.post('books/createBooks', books.createBooks);
-
-router.put('books/updateBooks', books.updateBooks);
-
-router.delete('books/deleteBooks/:isbn', books.deleteBooks);*/
+module.exports = app => {
+    const methods = require("../controllers/controller.js");
+    const router = require("express").Router();
+    // Create a new book
+    router.post("/newBook", methods.createBook);
+    // Get all books
+    router.get("/allBooks", methods.findAllBooks);
+    // Get all read books
+    router.get("/readBooks", methods.findAllReadBooks);
+    // Get book by isbn
+    router.get("/:isbn", methods.findOne);
+    // Update a book with isbn
+    router.put("/:isbn", methods.updateBook);
+    // Delete a book with isbn
+    router.delete("/:isbn", methods.deleteBook);
+    // Delete all Tutorials
+    router.delete("/deleteAllBooks", methods.deleteAllBooks);
+};
