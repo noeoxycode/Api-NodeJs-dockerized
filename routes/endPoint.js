@@ -4,11 +4,9 @@ module.exports = app => {
     // Create a new book
     router.post("/newBook", methods.createBook);
     // Get all books
-    router.get("/allBooks", methods.findAllBooks);
-    // Get all read books
-    router.get("/readBooks", methods.findAllReadBooks);
+    router.get("/books", methods.findAllBooks);
     // Get book by isbn
-    router.get("/:isbn", methods.findOne);
+    router.get("/books/:isbn", methods.findByIsbn);
     // Update a book with isbn
     router.put("/:isbn", methods.updateBook);
     // Delete a book with isbn

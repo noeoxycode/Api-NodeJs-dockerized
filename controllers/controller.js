@@ -35,16 +35,24 @@ exports.findAllBooks = (req, res) => {
                 message:
                     err.message || "Some error occurred while retrieving book."
             });
-        else res.send(data);
+        else res.status(200).send(data)
     });
 }
 
-exports.findAllReadBooks = (req, res) => {
-
-}
-
-exports.findOne = (req, res) => {
-
+exports.findByIsbn = (req, res) => {
+    Book.findByIsbn(req.params.isbn, (err, data) => {
+        if (err) {
+            if (err.kind === "not_found") {
+                res.status(404).send({
+                    message: `Not found book with isbn ${req.params.isbn}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "Error retrieving Tutorial with id " + req.params.isbn
+                });
+            }
+        } else res.status(200).send(data);
+    });
 }
 
 exports.updateBook = (req, res) => {
