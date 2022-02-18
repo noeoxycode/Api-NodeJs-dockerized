@@ -28,7 +28,15 @@ exports.createBook = (req, res) => {
 }
 
 exports.findAllBooks = (req, res) => {
-
+    const title = req.query.title;
+    Book.getAll(title, (err, data) => {
+        if (err)
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving book."
+            });
+        else res.send(data);
+    });
 }
 
 exports.findAllReadBooks = (req, res) => {

@@ -20,4 +20,20 @@ Book.createBook = (newBook, result) => {
         result(null, { isbn: res.isbn,  title: res.title, author: res.author, overview: res.overview, picture: res.picture, read_count: res.read_count });
     });
 };
+
+Book.getAll = (title, result) => {
+    let query = "SELECT * FROM Book";
+    if (title) {
+        query += ` WHERE title LIKE '%${title}%'`;
+    }
+    sql.query(query, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+        }
+        console.log("books: ", res);
+        result(null, res);
+    });
+};
 module.exports = Book;
