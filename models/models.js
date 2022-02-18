@@ -22,7 +22,7 @@ Book.createBook = (newBook, result) => {
 };
 
 Book.getAll = (title, result) => {
-    let query = "SELECT * FROM Book";
+    let query = "SELECT title FROM Book";
     if (title) {
         query += ` WHERE title LIKE '%${title}%'`;
     }
