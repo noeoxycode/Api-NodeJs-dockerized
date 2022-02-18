@@ -1,4 +1,4 @@
-const sql = require("../config/connectionDb");
+const sql = require("../config/db.config");
 
 const Book = function (book) {
     this.isbn = book.isbn;
@@ -54,5 +54,3 @@ Book.createBook = (newBook, result) => {
         result(null, { isbn: res.isbn,  title: res.title, author: res.author, overview: res.overview, picture: res.picture, read_count: res.read_count });
     });
 };
-
-https://www.bezkoder.com/node-js-rest-api-express-mysql/
