@@ -92,4 +92,16 @@ Book.remove = (isbn, result) => {
     });
 };
 
+Book.removeAll = result => {
+    sql.query("DELETE FROM Book", (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+        }
+        console.log(`deleted ${res.affectedRows} books`);
+        result(null, res);
+    });
+};
+
 module.exports = Book;

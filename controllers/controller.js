@@ -99,5 +99,12 @@ exports.deleteBook = (req, res) => {
 }
 
 exports.deleteAllBooks = (req, res) => {
-
+    Book.removeAll((err, data) => {
+        if (err)
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while removing all books."
+            });
+        else res.send({ message: `All books were deleted successfully!` });
+    });
 }
