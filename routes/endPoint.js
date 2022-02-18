@@ -15,4 +15,5 @@ module.exports = app => {
     router.delete("/:isbn", methods.deleteBook);
     // Delete all Tutorials
     router.delete("/deleteAllBooks", methods.deleteAllBooks);
+    app.use('/api/books', router);
 };
