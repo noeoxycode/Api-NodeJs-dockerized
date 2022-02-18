@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const book = require("controller.js")
+const book = require("../controllers/controller")
 
 
 app.get("/", book.getAll());

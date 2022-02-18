@@ -1,4 +1,4 @@
-const sql = require("./connectionDb");
+const sql = require("../config/connectionDb");
 
 const Book = function (book) {
     this.isbn = book.isbn;

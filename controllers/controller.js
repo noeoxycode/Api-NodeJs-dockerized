@@ -1,4 +1,4 @@
-const queries = require("queries.js");
+const queries = require("../models/queries");
 
 exports.getAll = (req, res) => {
 };
