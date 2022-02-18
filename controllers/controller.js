@@ -83,7 +83,19 @@ exports.updateBook = (req, res) => {
 }
 
 exports.deleteBook = (req, res) => {
-
+    Book.remove(req.params.isbn, (err, data) => {
+        if (err) {
+            if (err.kind === "not_found") {
+                res.status(404).send({
+                    message: `Not found book with id ${req.params.isbn}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "Could not delete Book with id " + req.params.isbn
+                });
+            }
+        } else res.send({ message: `Book was deleted successfully!` });
+    });
 }
 
 exports.deleteAllBooks = (req, res) => {

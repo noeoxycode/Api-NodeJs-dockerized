@@ -75,4 +75,21 @@ Book.updateBook = (isbn, book, result) => {
     );
 };
 
+Book.remove = (isbn, result) => {
+    sql.query("DELETE FROM Book WHERE isbn = ?", isbn, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+        }
+        if (res.affectedRows == 0) {
+            // not found Tutorial with the id
+            result({ kind: "not_found" }, null);
+            return;
+        }
+        console.log("deleted book with isbn: ", isbn);
+        result(null, res);
+    });
+};
+
 module.exports = Book;
