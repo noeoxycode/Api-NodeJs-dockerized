@@ -54,4 +54,25 @@ Book.findByIsbn = (isbn, result) => {
     });
 };
 
+Book.updateBook = (isbn, book, result) => {
+    sql.query(
+        "UPDATE book SET title = ?, author = ?, overview = ?, picture = ?, read_count = ? WHERE isbn = ?",
+        [book.title, book.author, book.overview, book.picture, book.read_count, isbn],
+        (err, res) => {
+            if (err) {
+                console.log("error: ", err);
+                result(null, err);
+                return;
+            }
+            if (res.affectedRows == 0) {
+                // not found book with the id
+                result({ kind: "not_found" }, null);
+                return;
+            }
+            console.log("updated book: ", { isbn: res.isbn,  title: res.title, author: res.author, overview: res.overview, picture: res.picture, read_count: res.read_count});
+            result(null, { isbn: res.isbn,  title: res.title, author: res.author, overview: res.overview, picture: res.picture, read_count: res.read_count });
+        }
+    );
+};
+
 module.exports = Book;
