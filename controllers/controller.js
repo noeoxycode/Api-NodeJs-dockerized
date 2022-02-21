@@ -1,12 +1,20 @@
 const Book = require("../models/models.js");
+const {dataControl} = require("./dataControl");
 
 exports.createBook = (req, res) => {
+
 // Validate request
     if (!req.body) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
     }
+    /*if(dataControl())
+    CONTROLE SIZE
+    controle extenisonde fichier image
+    pour create and put
+    controle isbn
+    message d erreur en json tableau ajout de msg au fur et a mesure*/
     // Create a Book
     const book = new Book({
         isbn: req.body.isbn,
