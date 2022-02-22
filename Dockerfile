@@ -1,15 +1,8 @@
-FROM node:latest
-
-RUN mkdir -p /usr/src/app
-
-WORKDIR /usr/src/app
-
-COPY package.json /usr/src/app/
-
+FROM node:slim
+COPY . /app
+WORKDIR /app
 RUN npm install
-
-COPY . /usr/src/app
-
+RUN apt-get -y update
+RUN apt-get -y install netcat
 EXPOSE 3000
-
-CMD ["npm", "start"]
+CMD ["sh", "wait.sh"]

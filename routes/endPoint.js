@@ -2,7 +2,7 @@ module.exports = app => {
     const methods = require("../controllers/controller.js");
     const router = require("express").Router();
     // Create a new book
-    router.post("/book", methods.createBook);
+    router.post("/books", methods.createBook);
     // Get all books
     router.get("/books", methods.findAllBooks);
     // Get book by isbn
