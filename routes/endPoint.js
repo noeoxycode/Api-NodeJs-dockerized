@@ -8,10 +8,10 @@ module.exports = app => {
     // Get book by isbn
     router.get("/books/:isbn", methods.findByIsbn);
     // Update a book with isbn
-    router.put("/books/:isbn", methods.updateBook);
+    router.patch("/books/:isbn", methods.updateBook);
     // Delete a book with isbn
     router.delete("/books/:isbn", methods.deleteBook);
-    // Delete all Tutorials
-    router.delete("/deleteAllBooks", methods.deleteAllBooks);
+    // Delete all books
+    router.delete("/books", methods.deleteAllBooks);
     app.use('/', router);
 };
