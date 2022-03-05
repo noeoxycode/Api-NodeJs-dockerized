@@ -1,7 +1,7 @@
-CREATE DATABASE test;
+CREATE DATABASE library;
 
-DROP TABLE IF EXISTS `books`;
-CREATE TABLE IF NOT EXISTS `books` (
+DROP TABLE IF EXISTS `Book`;
+CREATE TABLE IF NOT EXISTS `Book` (
   `ISBN` varchar(13) NOT NULL,
   `Title` varchar(200) DEFAULT NULL,
   `Author` varchar(150) DEFAULT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `books` (
   PRIMARY KEY (`ISBN`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-INSERT INTO `books` (`ISBN`, `Title`, `Author`, `Overview`, `Picture`, `Read_Count`) VALUES
+INSERT INTO `Book` (`ISBN`, `Title`, `Author`, `Overview`, `Picture`, `Read_Count`) VALUES
 ('9781408855652', 'Harry Potter and the Philosopher Stone', 'J. K. Rowling', 'It is a story about Harry Potter, an orphan brought up by his aunt and uncle because his parents were killed when he was a baby. Harry is unloved by his uncle and aunt but everything changes when he is invited to join Hogwarts School of Witchcraft and Wizardry and he finds out he is a wizard', 'img\\harryPotterPhiloStone.gif', 1),
 ('9782290133941', 'Hamlet', 'William Shakespeare', 'Hamlet Summary. The ghost of the King of Denmark tells his son Hamlet to avenge his murder by killing the new king, Hamlet is uncle. Hamlet feigns madness, contemplates life and death, and seeks revenge. His uncle, fearing for his life, also devises plots to kill Hamlet.', 'img\\helmet.gif', 2),
 ('9798753408020', 'Macbeth ', 'William Shakespeare', 'Hamlet Summary. The ghost of the King of Denmark tells his son Hamlet to avenge his murder by killing the new king, Hamlet is uncle. Hamlet feigns madness, contemplates life and death, and seeks revenge. His uncle, fearing for his life, also devises plots to kill Hamlet.', 'img\\Macbeth.gif', 2),
@@ -22,6 +22,3 @@ INSERT INTO `books` (`ISBN`, `Title`, `Author`, `Overview`, `Picture`, `Read_Cou
 ('9782081282575', 'Jane Eyre', 'Charlotte Brontë', 'Jane Eyre is the story of a young, orphaned girl (shockingly, she is named Jane Eyre) who lives with her aunt and cousins, the Reeds, at Gateshead Hall. Like all nineteenth-century orphans, her situation pretty much sucks. Mrs. Reed hates Jane and allows her son John to torment the girl.', 'img\\eyre.gif', 2),
 ('9781594631207', 'Emotional First Aid: Practical Strategies for Treating Failure', 'Guy Winch', 'Emotional First Aid explores the link between rejection and violence and the self-defeating behaviors that cause us to withdraw when we are lonely or have low self-esteem, starting a vicious cycle and hampering effective relationships.', 'img\\healthbook.gif', 2),
 ('9780802412713', 'The 5 Love Languages: The Secret to Love That Lasts', 'Gary Chapman', 'In The Five Love Languages: The Secret to a Love that Lasts, Dr. Gary Chapman asserts that every person speaks one of these “primary” love languages: Words of Affirmation, Acts of Service, Physical Touch, Quality Time, or Gifts. People can also speak a secondary language, but the primary language is the most important.', 'img\\5languagetolove.gif', 4);
-COMMIT;
-
-flush privileges;

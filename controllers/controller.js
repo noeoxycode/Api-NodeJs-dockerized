@@ -26,7 +26,7 @@ exports.createBook = (req, res) => {
     });
     // Save Book in the database
     Book.createBook(book, (err, data) => {
-        const controlledData = DataControl.da;
+        const controlledData = DataControl.dataControl();
         if(!controlledData.isOk)
             res.status(422).send({
                 message:
@@ -88,7 +88,7 @@ exports.updateBook = (req, res) => {
                     });
                 } else {
                     res.status(500).send({
-                        message: "Error updating Tutorial with isbn " + req.params.isbn
+                        message: "Error updating book with isbn " + req.params.isbn
                     });
                 }
             } else res.status(200).send(data);
