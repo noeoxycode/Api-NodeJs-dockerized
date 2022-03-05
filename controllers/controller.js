@@ -1,5 +1,5 @@
 const Book = require("../models/models.js");
-const {dataControl} = require("./dataControl");
+const DataControl = require("./dataControl");
 
 exports.createBook = (req, res) => {
 
@@ -26,7 +26,7 @@ exports.createBook = (req, res) => {
     });
     // Save Book in the database
     Book.createBook(book, (err, data) => {
-        const controlledData = dataControl(book);
+        const controlledData = DataControl.da;
         if(!controlledData.isOk)
             res.status(422).send({
                 message:
