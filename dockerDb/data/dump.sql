@@ -1,5 +1,5 @@
 CREATE DATABASE library;
-
+USE library;
 DROP TABLE IF EXISTS `Book`;
 CREATE TABLE IF NOT EXISTS `Book` (
   `ISBN` varchar(13) NOT NULL,
@@ -22,3 +22,5 @@ INSERT INTO `Book` (`ISBN`, `Title`, `Author`, `Overview`, `Picture`, `Read_Coun
 ('9782081282575', 'Jane Eyre', 'Charlotte Brontë', 'Jane Eyre is the story of a young, orphaned girl (shockingly, she is named Jane Eyre) who lives with her aunt and cousins, the Reeds, at Gateshead Hall. Like all nineteenth-century orphans, her situation pretty much sucks. Mrs. Reed hates Jane and allows her son John to torment the girl.', 'img\\eyre.gif', 2),
 ('9781594631207', 'Emotional First Aid: Practical Strategies for Treating Failure', 'Guy Winch', 'Emotional First Aid explores the link between rejection and violence and the self-defeating behaviors that cause us to withdraw when we are lonely or have low self-esteem, starting a vicious cycle and hampering effective relationships.', 'img\\healthbook.gif', 2),
 ('9780802412713', 'The 5 Love Languages: The Secret to Love That Lasts', 'Gary Chapman', 'In The Five Love Languages: The Secret to a Love that Lasts, Dr. Gary Chapman asserts that every person speaks one of these “primary” love languages: Words of Affirmation, Acts of Service, Physical Touch, Quality Time, or Gifts. People can also speak a secondary language, but the primary language is the most important.', 'img\\5languagetolove.gif', 4);
+
+flush privileges;

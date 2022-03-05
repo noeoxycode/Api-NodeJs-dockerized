@@ -105,3 +105,8 @@ Book.removeAll = result => {
 };
 
 module.exports = Book;
+
+
+
+
+/*sudo docker exec -it e2dc38664746 mysql -p*/

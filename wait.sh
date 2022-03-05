@@ -5,4 +5,4 @@ while ! nc -z localhost 3306 ; do
     sleep 3
 done
 
-npm start || node server.js
+npm start
