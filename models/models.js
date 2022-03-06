@@ -45,18 +45,18 @@ Book.findByIsbn = (isbn, result) => {
             return;
         }
         if (res.length) {
-            console.log("found tutorial: ", res[0]);
+            console.log("found book: ", res[0]);
             result(null, res[0]);
             return;
         }
-        // not found Tutorial with the id
+        // not found book with the id
         result({ kind: "not_found" }, null);
     });
 };
 
 Book.updateBook = (isbn, book, result) => {
     sql.query(
-        "UPDATE book SET title = ?, author = ?, overview = ?, picture = ?, read_count = ? WHERE isbn = ?",
+        "UPDATE Book SET title = ?, author = ?, overview = ?, picture = ?, read_count = ? WHERE isbn = ?",
         [book.title, book.author, book.overview, book.picture, book.read_count, isbn],
         (err, res) => {
             if (err) {
@@ -83,7 +83,7 @@ Book.remove = (isbn, result) => {
             return;
         }
         if (res.affectedRows == 0) {
-            // not found Tutorial with the id
+            // not found book with the id
             result({ kind: "not_found" }, null);
             return;
         }

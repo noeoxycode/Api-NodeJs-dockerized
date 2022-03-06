@@ -15,10 +15,10 @@ services:
   db:
     environment:
         MYSQL_ROOT_HOST: "%"
-        MYSQL_DATABASE: library
+        MYSQL_DATABASE: "library"
         MYSQL_USER: "nono"
         MYSQL_PASSWORD: "nono"
-        MYSQL_RANDOM_ROOT_PASSWORD: yes
+        MYSQL_RANDOM_ROOT_PASSWORD: "yes"
     image: mysql:5
     ports:
       - "3306:3306"

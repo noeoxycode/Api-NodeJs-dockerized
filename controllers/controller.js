@@ -62,7 +62,7 @@ exports.findByIsbn = (req, res) => {
                 });
             } else {
                 res.status(500).send({
-                    message: "Error retrieving Tutorial with id " + req.params.isbn
+                    message: "Error retrieving book with id " + req.params.isbn
                 });
             }
         } else res.status(200).send(data);
