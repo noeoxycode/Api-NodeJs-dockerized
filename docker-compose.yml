@@ -25,9 +25,9 @@ services:
     expose:
       - "3306"
     env_file:
-      - .env
+      - src/.env
     volumes:
-      - ./dockerDb/data:/docker-entrypoint-initdb.d/
+      - ./src/dockerDb/data:/docker-entrypoint-initdb.d/
     networks:
       - nono
     container_name: mysql
