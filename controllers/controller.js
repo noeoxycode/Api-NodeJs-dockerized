@@ -26,12 +26,12 @@ exports.createBook = (req, res) => {
     });
     // Save Book in the database
     Book.createBook(book, (err, data) => {
-        const controlledData = DataControl.dataControl();
-        if(!controlledData.isOk)
+        /*const controlledData = DataControl.dataControl();
+        if(controlledData.isOk !== true)
             res.status(422).send({
                 message:
                     controlledData.res,
-            });
+            });*/
         if (err)
             res.status(500).send({
                 message:

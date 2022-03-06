@@ -10,7 +10,7 @@ const Book = function (book) {
     this.read_count = book.read_count;
 };
 Book.createBook = (newBook, result) => {
-    sql.query("INSERT INTO Book SET ?", newBook, (err, res) => {
+    sql.query("INSERT INTO book SET ?", newBook, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -22,7 +22,7 @@ Book.createBook = (newBook, result) => {
 };
 
 Book.getAll = (title, result) => {
-    let query = "SELECT title FROM Book";
+    let query = "SELECT title FROM book";
     if (title) {
         query += ` WHERE title LIKE '%${title}%'`;
     }
@@ -38,7 +38,7 @@ Book.getAll = (title, result) => {
 };
 
 Book.findByIsbn = (isbn, result) => {
-    sql.query(`SELECT * FROM Book WHERE isbn = ${isbn}`, (err, res) => {
+    sql.query(`SELECT * FROM book WHERE isbn = ${isbn}`, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -56,7 +56,7 @@ Book.findByIsbn = (isbn, result) => {
 
 Book.updateBook = (isbn, book, result) => {
     sql.query(
-        "UPDATE Book SET title = ?, author = ?, overview = ?, picture = ?, read_count = ? WHERE isbn = ?",
+        "UPDATE book SET title = ?, author = ?, overview = ?, picture = ?, read_count = ? WHERE isbn = ?",
         [book.title, book.author, book.overview, book.picture, book.read_count, isbn],
         (err, res) => {
             if (err) {
@@ -64,7 +64,7 @@ Book.updateBook = (isbn, book, result) => {
                 result(null, err);
                 return;
             }
-            if (res.affectedRows == 0) {
+            if (res.affectedRows === 0) {
                 // not found book with the id
                 result({ kind: "not_found" }, null);
                 return;
@@ -76,13 +76,13 @@ Book.updateBook = (isbn, book, result) => {
 };
 
 Book.remove = (isbn, result) => {
-    sql.query("DELETE FROM Book WHERE isbn = ?", isbn, (err, res) => {
+    sql.query("DELETE FROM book WHERE isbn = ?", isbn, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
             return;
         }
-        if (res.affectedRows == 0) {
+        if (res.affectedRows === 0) {
             // not found book with the id
             result({ kind: "not_found" }, null);
             return;
@@ -93,7 +93,7 @@ Book.remove = (isbn, result) => {
 };
 
 Book.removeAll = result => {
-    sql.query("DELETE FROM Book", (err, res) => {
+    sql.query("DELETE FROM book", (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);

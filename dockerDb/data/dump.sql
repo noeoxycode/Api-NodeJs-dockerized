@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS library;
 USE library;
-DROP TABLE IF EXISTS `Book`;
-CREATE TABLE IF NOT EXISTS `Book` (
+DROP TABLE IF EXISTS book;
+CREATE TABLE IF NOT EXISTS `book` (
   `ISBN` varchar(13) NOT NULL,
   `Title` varchar(200) DEFAULT NULL,
   `Author` varchar(150) DEFAULT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `Book` (
   PRIMARY KEY (`ISBN`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-INSERT INTO `Book` (`ISBN`, `Title`, `Author`, `Overview`, `Picture`, `Read_Count`) VALUES
+INSERT INTO book (`ISBN`, `Title`, `Author`, `Overview`, `Picture`, `Read_Count`) VALUES
 ('9781408855652', 'Harry Potter and the Philosopher Stone', 'J. K. Rowling', 'It is a story about Harry Potter, an orphan brought up by his aunt and uncle because his parents were killed when he was a baby. Harry is unloved by his uncle and aunt but everything changes when he is invited to join Hogwarts School of Witchcraft and Wizardry and he finds out he is a wizard', 'img\\harryPotterPhiloStone.gif', 1),
 ('9782290133941', 'Hamlet', 'William Shakespeare', 'Hamlet Summary. The ghost of the King of Denmark tells his son Hamlet to avenge his murder by killing the new king, Hamlet is uncle. Hamlet feigns madness, contemplates life and death, and seeks revenge. His uncle, fearing for his life, also devises plots to kill Hamlet.', 'img\\helmet.gif', 2),
 ('9798753408020', 'Macbeth ', 'William Shakespeare', 'Hamlet Summary. The ghost of the King of Denmark tells his son Hamlet to avenge his murder by killing the new king, Hamlet is uncle. Hamlet feigns madness, contemplates life and death, and seeks revenge. His uncle, fearing for his life, also devises plots to kill Hamlet.', 'img\\Macbeth.gif', 2),
