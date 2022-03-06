@@ -1,0 +1,40 @@
+version: "3"
+services:
+  node:
+    depends_on:
+      - db
+    build: .
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    networks:
+      - nono
+    restart: unless-stopped
+    command: npm run start
+  db:
+    environment:
+        MYSQL_ROOT_HOST: "%"
+        MYSQL_DATABASE: "library"
+        MYSQL_USER: "nono"
+        MYSQL_PASSWORD: "nono"
+        MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    image: mysql:5
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    env_file:
+      - .env
+    volumes:
+      - ./dockerDb/data:/docker-entrypoint-initdb.d/
+    networks:
+      - nono
+    container_name: mysql
+
+volumes:
+  db_volume:
+
+networks:
+  nono:
+

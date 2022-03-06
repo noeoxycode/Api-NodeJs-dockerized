@@ -1,5 +1,5 @@
 const Book = require("../models/models.js");
-const {dataControl} = require("./dataControl");
+const DataControl = require("./dataControl");
 
 exports.createBook = (req, res) => {
 
@@ -26,12 +26,12 @@ exports.createBook = (req, res) => {
     });
     // Save Book in the database
     Book.createBook(book, (err, data) => {
-        const controlledData = dataControl(book);
-        if(!controlledData.isOk)
+        /*const controlledData = DataControl.dataControl();
+        if(controlledData.isOk !== true)
             res.status(422).send({
                 message:
                     controlledData.res,
-            });
+            });*/
         if (err)
             res.status(500).send({
                 message:
@@ -62,7 +62,7 @@ exports.findByIsbn = (req, res) => {
                 });
             } else {
                 res.status(500).send({
-                    message: "Error retrieving Tutorial with id " + req.params.isbn
+                    message: "Error retrieving book with id " + req.params.isbn
                 });
             }
         } else res.status(200).send(data);
@@ -88,7 +88,7 @@ exports.updateBook = (req, res) => {
                     });
                 } else {
                     res.status(500).send({
-                        message: "Error updating Tutorial with isbn " + req.params.isbn
+                        message: "Error updating book with isbn " + req.params.isbn
                     });
                 }
             } else res.status(200).send(data);
@@ -108,7 +108,7 @@ exports.deleteBook = (req, res) => {
                     message: "Could not delete Book with id " + req.params.isbn
                 });
             }
-        } else res.send({ message: `Book was deleted successfully!` });
+        } else res.status(204).send({ message: `Book was deleted successfully!` });
     });
 }
 
